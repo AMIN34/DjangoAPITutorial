@@ -1,13 +1,14 @@
 # Django
 from django.shortcuts import render
-from .models import PowerData
-from .serializers import PowerDataSerializer
+from .models import PowerData, File
+from .serializers import PowerDataSerializer, FileSerializer
 from django.shortcuts import get_object_or_404
 
 # drf
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.parsers import FileUploadParser
 
 # Create your views here.
 class Pagination(PageNumberPagination):
@@ -21,3 +22,10 @@ class PowerDataViewSet(viewsets.ModelViewSet):
     serializer_class = PowerDataSerializer
     #paginate
     pagination_class = Pagination
+    
+
+class FileViewSet(viewsets.ModelViewSet):
+    queryset = File.objects.all()
+    serializer_class = FileSerializer
+    parser_classes = (FileUploadParser,)
+    permission_classes  = (permissions.AllowAny,)
