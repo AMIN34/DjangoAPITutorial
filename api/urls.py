@@ -6,8 +6,8 @@ from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 
 router.register('PowerData', PowerDataViewSet, basename='power_data')
-router.register('files', FileViewSet, basename='files')
+router.register('file', FileViewSet, basename='file')
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('', include(router.urls)),
 ]
