@@ -8,7 +8,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.renderers import TemplateHTMLRenderer
 
 # Create your views here.
 class Pagination(PageNumberPagination):
@@ -23,9 +23,17 @@ class PowerDataViewSet(viewsets.ModelViewSet):
     #paginate
     pagination_class = Pagination
     
+    def list(self, request, *args, **kwargs):
+        powerdata_list = self.get_queryset()
+        return render(request, 'powerdata_table.html', {'powerdata_list': powerdata_list})
+    
 
 class FileViewSet(viewsets.ModelViewSet):
     queryset = File.objects.all()
     serializer_class = FileSerializer
     #paginate
     pagination_class = Pagination
+    
+    def list(self, request, *args, **kwargs):
+        file_list = self.get_queryset()
+        return render(request, 'file_table.html', {'file_list': file_list})

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power Data List</title>
+</head>
+<body>
+    <h1>Power Data List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Voltage</th>
+                <th>Current</th>
+                <th>Power</th>
+                <th>Energy</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for powerdata in powerdata_list %}
+            <tr>
+                <td>{{ powerdata.id }}</td>
+                <td>{{ powerdata.voltage }}</td>
+                <td>{{ powerdata.current }}</td>
+                <td>{{ powerdata.power }}</td>
+                <td>{{ powerdata.energy }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

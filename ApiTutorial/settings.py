@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)!x!^&czj-p^li_o&zgh3v6=gy#69bq)b%wz!(@syjec(4*j(g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['AminurRashid.pythonanywhere.com']
+ALLOWED_HOSTS = ['AminurRashid.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'ApiTutorial.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

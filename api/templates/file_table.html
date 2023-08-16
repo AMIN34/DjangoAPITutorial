@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File List</title>
+</head>
+<body>
+    <h1>File List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>File Name</th>
+                <th>Upload Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for file in file_list %}
+            <tr>
+                <td>{{ file.id }}</td>
+                <td><a href="{{ file.file.url }}">{{ file.file.name }}</a></td>
+                <td>{{ file.upload_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
